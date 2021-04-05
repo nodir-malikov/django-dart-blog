@@ -1,0 +1,29 @@
+{% load menu %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <h2><a href="{% url 'home' %}">Classic</a></h2>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {% show_menu %}
+            </div>
+            <div class="col-md-2 mt-5 pt-5">
+                <form action="{% url 'search' %}" method="get">
+                    <div class="search d-flex justify-content-center">
+                        <label>
+                            <input type="text" name="s" class="searchTerm" placeholder="Search bar">
+                        </label>
+                        <span>
+                        <button type="submit" class="searchButton btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,45 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block title %}{{ title }} :: {{ block.super }}{% endblock %}
+{% block content %}
+    <section class="blog-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
+                    <div class="col-md-12">
+                        <div class="single-post-big">
+                            <div class="big-image">
+                                <a href="{{ posts.first.get_absolute_url }}"><img src="{{ posts.first.photo.url }}"
+                                                                                  width="660px" height="350px"
+                                                                                  alt=""></a>
+                            </div>
+                            <div class="big-text">
+                                <h3><a href="{{ posts.first.get_absolute_url }}">{{ posts.first.title }}</a></h3>
+                                <h4><span>Posted By: <span class="author-name">{{ posts.first.author }}</span></span>
+                                </h4>
+                                <p>{{ posts.first.anons }}</p>
+                                <h4><span>{{ posts.first.created_at|date:'H:i | d.m.Y' }}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% for post in posts %}
+                        <div class="col-md-3">
+                            <div class="single-post">
+                                <a href="{{ post.get_absolute_url }}"><img src="{{ post.photo.url }}" width="300px"
+                                                                           height="201px" alt="{{ post.title }}"></a>
+                                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                <h4><span>Posted By: <span class="author-name">{{ post.author }}</span></span>
+                                </h4>
+                                <p>{{ post.anons }}</p>
+                                <h4><span>{{ post.created_at|date:'H:i | d.m.Y' }}</span></h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% include 'myblog/inc/_pagination.html' %}
+
+    </section>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dart Blog{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'responsive.css' %}">
+
+    <style>
+        .p-image {
+            height: auto !important;
+        }
+
+        .category {
+            background: #eee !important;
+            border-radius: 3px 0 0 3px !important;
+            color: #999 !important;
+            display: inline-block !important;
+            height: 26px !important;
+            line-height: 26px !important;
+            padding: 0 20px 0 23px !important;
+            position: relative !important;
+            margin: 0 10px 10px 0 !important;
+            text-decoration: none !important;
+            -webkit-transition: color 0.2s !important;
+        }
+
+        .category::before {
+            background: #fff !important;
+            border-radius: 10px !important;
+            box-shadow: inset 0 1px rgba(0, 0, 0, 0.25) !important;
+            content: '' !important;
+            height: 6px !important;
+            left: 10px !important;
+            position: absolute !important;
+            width: 6px !important;
+            top: 10px !important;
+        }
+
+        .category::after {
+            background: #fff !important;
+            border-bottom: 13px solid transparent !important;
+            border-left: 10px solid #eee !important;
+            border-top: 13px solid transparent !important;
+            content: '' !important;
+            position: absolute !important;
+            right: 0 !important;
+            top: 0 !important;
+        }
+
+        .category:hover {
+            background-color: crimson !important;
+            color: white !important;
+        }
+
+        .category:hover::after {
+            border-left-color: crimson !important;
+        }
+
+        .border-top {
+            border-top: 1px solid #40c4ff!important;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+    {% include 'myblog/inc/_navbar.html' %}
+    {% block content %}
+    {% endblock %}
+    {% include 'myblog/inc/_footer.html' %}
+</div>
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/active.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<div class="button-group">
+    <button disabled class="is-checked">Popular</button>
+</div>
+<div class="grid">
+    {% for post in posts %}
+        <div class="portfolio-item popular">
+            <img src="{{ post.photo.url }}" class="p-image" alt="{{ post.title }}">
+            <div class="portfolio-text">
+                <h5><a href="{{ post.get_absolute_url }}">{{ post.anons|truncatewords:10 }}</a></h5>
+                <p>{{ post.author }} <span>|</span> {{ post.created_at|date:'H:i | d.m.Y' }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

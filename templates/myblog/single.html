@@ -1,0 +1,45 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% load sidebar %}
+
+{% block title %}{{ title }} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+    <section class="single-blog-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="border-top">
+                        <div class="col-md-8">
+                            <div class="blog-area">
+                                <div class="blog-area-part">
+                                    <h2>{{ title }}</h2>
+                                    <span>Category: <a href="{{ post.category.get_absolute_url }}"
+                                                       class="category">{{ post.category }}</a></span>
+                                    {% if post.tags.exists %}
+                                        <span> Tags:
+                                            {% for tag in post.tags.all %}
+                                                <a href="{{ tag.get_absolute_url }}"
+                                                   class="category">{{ tag.title }}</a>
+                                            {% endfor %}
+                                           
+                                           </span>
+                                    {% endif %}
+                                    <p>Views: {{ post.views }}</p>
+                                    <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+                                    <div class="for-style">
+                                        {{ post.content|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {% get_popular_posts 5 %}
+                            {% get_tags %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
